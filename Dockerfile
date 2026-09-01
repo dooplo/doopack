@@ -1,5 +1,5 @@
 # Multi-stage Dockerfile for DooPack production
-FROM rust:1.80-slim as builder
+FROM rust:slim-bookworm as builder
 WORKDIR /usr/src/doopack
 
 # Install build dependencies
