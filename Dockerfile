@@ -13,7 +13,13 @@ RUN apt-get update && apt-get install -y \
 
 # Install WebAssembly target and Trunk for frontend compilation
 RUN rustup target add wasm32-unknown-unknown
-RUN curl -L https://github.com/trunk-rs/trunk/releases/download/v0.21.14/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf- -C /usr/local/bin
+RUN arch=$(dpkg --print-architecture) && \
+    if [ "$arch" = "arm64" ]; then \
+        TRUNK_ARCH="aarch64"; \
+    else \
+        TRUNK_ARCH="x86_64"; \
+    fi && \
+    curl -L "https://github.com/trunk-rs/trunk/releases/download/v0.21.14/trunk-${TRUNK_ARCH}-unknown-linux-gnu.tar.gz" | tar -xzf- -C /usr/local/bin
 
 # Copy workspace configurations and sources
 COPY Cargo.toml Cargo.lock ./
@@ -41,7 +47,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Docker CLI so the orchestrator can build & run container runners on host
-RUN install -m 0.755 -d /etc/apt/keyrings \
+RUN install -m 0755 -d /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
     && chmod a+r /etc/apt/keyrings/docker.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" | \
