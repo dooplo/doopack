@@ -1,0 +1,17 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/shared",
+    "crates/server",
+    "sdks/rust-sdk",
+    "sdks/doopack-sdk",
+    "crates/frontend"
+]
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+tokio = { version = "1.0", features = ["full"] }
+tokio-stream = "0.1"
+futures-util = "0.3"

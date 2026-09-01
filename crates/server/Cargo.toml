@@ -1,0 +1,43 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+shared = { path = "../shared" }
+tokio = { workspace = true, features = ["full"] }
+tokio-stream = { workspace = true }
+futures-util = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+
+# Web
+axum = "0.8.0-alpha.1" # Using latest or standard axum. Actually, 0.7 or 0.8.0-alpha. Let's see if we can use "0.8.0-alpha.1" or just "0.7.5" / "0.8.0-alpha.1" depending on available. Let's try "0.8.0-alpha.1" or let cargo resolve if it exists, or axum = "0.7" if "0.8.0-alpha" is not released on crates.io. Wait, let's use axum = "0.8.0-alpha.1" or we can check what's on crates.io if we want to be safe, or just "0.7" or "0.8.0-alpha.2". Let's put a flexible range or a standard version. Let's write "0.7" if we want stability, but the spec says "axum 0.8". Let's write "0.8.0-alpha.1" or "0.8.0-alpha.2". Wait! Let's check axum versions or write "0.8.0-alpha.1" first.
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# DB
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "chrono", "json"] }
+
+# Docker
+bollard = "0.15"
+
+# Redis
+redis = { version = "0.25", features = ["tokio-comp", "connection-manager", "aio"] }
+deadpool-redis = "0.15"
+
+# System Monitoring
+sysinfo = "0.30"
+
+# Security
+argon2 = "0.5"
+jsonwebtoken = "9.3"
+validator = { version = "0.18", features = ["derive"] }
+rand = "0.8"
+dotenvy = "0.15"
+base64 = "0.22"
+zip = "2.1"
+hex = "0.4"
+async-trait = "0.1"
+cron = "0.17.0"

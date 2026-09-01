@@ -1,0 +1,85 @@
+# ==============================================================================
+# Rust Build Artifacts
+# ==============================================================================
+target/
+**/*.rs.bk
+Cargo.lock.backup
+
+# ==============================================================================
+# Trunk & Frontend WebAssembly Build Artifacts
+# ==============================================================================
+dist/
+crates/frontend/dist/
+*.wasm
+*.js.map
+
+# ==============================================================================
+# Database & SQLite Files
+# ==============================================================================
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+crates/server/*.db
+crates/server/*.db-shm
+crates/server/*.db-wal
+data/
+doopack_sqlite_data/
+doopack_redis_data/
+
+# ==============================================================================
+# Runtime & Dynamic Workspaces (Ephemeral Runner Containers)
+# ==============================================================================
+services_runtime/
+runtime/
+tmp/
+temp/
+
+# ==============================================================================
+# Environment Variables & Secrets
+# ==============================================================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+
+# ==============================================================================
+# System & Editor Specific Files
+# ==============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# JetBrains / VSCode / Sublime / Vim
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+*.bak
+
+# ==============================================================================
+# Local Backups & Export Dumps
+# ==============================================================================
+doopack_export*.json
+doopack_backup*.json
+*.dump.json
+
+# ==============================================================================
+# Logs
+# ==============================================================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

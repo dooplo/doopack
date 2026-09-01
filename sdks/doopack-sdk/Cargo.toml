@@ -1,0 +1,18 @@
+[package]
+name = "doopack-sdk"
+version = "0.1.0"
+edition = "2021"
+description = "Official Rust SDK for interacting with Doopack event-driven platform and orchestrator"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+shared = { path = "../../crates/shared" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+reqwest = { version = "0.12", default-features = false, features = ["json", "default-tls"] }
+thiserror = "1.0"
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full"] }
+

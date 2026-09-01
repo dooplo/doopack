@@ -1,0 +1,3 @@
+[serve]
+# The port to serve the frontend on. Default is 8080.
+port = 4051
